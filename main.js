@@ -20,7 +20,7 @@ class LottoBall extends HTMLElement {
                     font-weight: bold;
                     color: #fff;
                     background-color: ${color};
-                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
                 }
             </style>
             <div class="ball">${number}</div>
@@ -38,13 +38,54 @@ class LottoBall extends HTMLElement {
 
 customElements.define('lotto-ball', LottoBall);
 
+const themeToggle = document.getElementById('theme-toggle');
+const wideToggle = document.getElementById('wide-toggle');
+const generateButton = document.getElementById('generate-btn');
+const lottoNumbersContainer = document.getElementById('lotto-numbers');
 
-document.getElementById('generate-btn').addEventListener('click', () => {
-    const lottoNumbersContainer = document.getElementById('lotto-numbers');
+const setToggleState = (button, isActive, activeLabel, inactiveLabel) => {
+    button.setAttribute('aria-pressed', String(isActive));
+    button.textContent = isActive ? activeLabel : inactiveLabel;
+};
+
+const applyTheme = (isDark) => {
+    document.body.classList.toggle('dark', isDark);
+    setToggleState(themeToggle, isDark, 'Light Mode', 'Dark Mode');
+    localStorage.setItem('lotto-theme', isDark ? 'dark' : 'light');
+};
+
+const applyWide = (isWide) => {
+    document.body.classList.toggle('wide', isWide);
+    setToggleState(wideToggle, isWide, 'Normal Width', 'Wide Mode');
+    localStorage.setItem('lotto-wide', isWide ? 'wide' : 'normal');
+};
+
+const initToggles = () => {
+    const storedTheme = localStorage.getItem('lotto-theme');
+    const storedWide = localStorage.getItem('lotto-wide');
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    applyTheme(storedTheme ? storedTheme === 'dark' : prefersDark);
+    applyWide(storedWide ? storedWide === 'wide' : false);
+};
+
+initToggles();
+
+themeToggle.addEventListener('click', () => {
+    const isDark = !document.body.classList.contains('dark');
+    applyTheme(isDark);
+});
+
+wideToggle.addEventListener('click', () => {
+    const isWide = !document.body.classList.contains('wide');
+    applyWide(isWide);
+});
+
+generateButton.addEventListener('click', () => {
     lottoNumbersContainer.innerHTML = '';
     const numbers = new Set();
 
-    while(numbers.size < 6) {
+    while (numbers.size < 6) {
         const randomNumber = Math.floor(Math.random() * 45) + 1;
         numbers.add(randomNumber);
     }
