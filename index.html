@@ -45,6 +45,22 @@
                 <button class="submit-button" type="submit">Send Inquiry</button>
             </form>
         </section>
+        <section class="comments-section" aria-labelledby="comments-title">
+            <div class="form-header">
+                <h2 id="comments-title">Comments</h2>
+                <p>Share feedback or ideas below.</p>
+            </div>
+            <div id="disqus_thread"></div>
+            <script>
+                (function() {
+                    var d = document, s = d.createElement('script');
+                    s.src = 'https://spsychic.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+        </section>
     </div>
     <script src="main.js" type="module"></script>
 </body>
