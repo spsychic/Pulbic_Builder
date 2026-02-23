@@ -109,6 +109,70 @@ h1 {
     gap: 24px;
 }
 
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+}
+
+.info-card {
+    padding: 20px;
+    border-radius: 16px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    box-shadow: 0 12px 24px var(--shadow);
+}
+
+.info-card h3 {
+    margin: 0 0 10px;
+    font-size: 18px;
+}
+
+.info-card p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.guide-card {
+    padding: 20px;
+    border-radius: 16px;
+    background: linear-gradient(120deg, rgba(11, 143, 127, 0.12), rgba(244, 182, 58, 0.15));
+    border: 1px solid var(--border);
+}
+
+.guide-card h3 {
+    margin: 0 0 12px;
+    font-size: 18px;
+}
+
+.guide-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 8px;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.guide-list li {
+    padding-left: 18px;
+    position: relative;
+}
+
+.guide-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--primary);
+}
+
 .hero-card {
     padding: 28px;
     border-radius: 20px;
