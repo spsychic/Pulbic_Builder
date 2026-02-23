@@ -20,6 +20,31 @@
         </div>
         <div id="lotto-numbers" class="lotto-numbers-container"></div>
         <button id="generate-btn" class="generate-button">Generate Numbers</button>
+        <section class="partner-form-section" aria-labelledby="partner-form-title">
+            <div class="form-header">
+                <h2 id="partner-form-title">Partnership Inquiry</h2>
+                <p>Reach out for collaborations or business inquiries. We will get back within 2 business days.</p>
+            </div>
+            <form class="partner-form" action="https://formspree.io/f/xgolpvzg" method="POST">
+                <label>
+                    Name
+                    <input type="text" name="name" placeholder="Your name" autocomplete="name" required>
+                </label>
+                <label>
+                    Company
+                    <input type="text" name="company" placeholder="Company name" autocomplete="organization">
+                </label>
+                <label>
+                    Email
+                    <input type="email" name="email" placeholder="you@company.com" autocomplete="email" required>
+                </label>
+                <label>
+                    Message
+                    <textarea name="message" rows="5" placeholder="Tell us about the partnership." required></textarea>
+                </label>
+                <button class="submit-button" type="submit">Send Inquiry</button>
+            </form>
+        </section>
     </div>
     <script src="main.js" type="module"></script>
 </body>
